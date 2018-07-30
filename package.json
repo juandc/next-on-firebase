@@ -1,0 +1,8 @@
+{
+  "name": "next-on-firebase",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:juandc/next-on-firebase.git",
+  "author": "Juan David Castro <me@juandc.co>",
+  "license": "MIT"
+}
