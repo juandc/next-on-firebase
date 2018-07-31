@@ -6,24 +6,16 @@ export default class Home extends Component {
       <div>
         Powered by <span>#Nextjs</span> and <span>#Firebase</span>
         <style jsx>{`
-          :global(body) {
-            margin: 0;
-            padding: 0;
-          }
-
           div {
             align-items: center;
-            background-color: #e0dbff;
-            color: #333;
             display: flex;
             font-size: 22px;
             justify-content: center;
-            height: calc(100vh);
           }
 
           span {
             border-bottom: 1px solid transparent;
-            color: #55f;
+            color: #ec7c0e;
             cursor: pointer;
             margin-top: 0;
             margin-left: 7.5px;
