@@ -1,20 +1,20 @@
 import React, { Component } from "react";
-import Link from "next/link";
 import Icon from "./Icon";
+import { Link } from "../../routes";
 
 export default class Header extends Component {
   render() {
     return (
       <header>
         <div className="align-left">
-          <Link href={{ pathname: "/", query: {} }}>
+          <Link route="home" passhref>
             <a>Home</a>
           </Link>
-          <Link href={{ pathname: "/library", query: { library: "Firebase" } }}>
+          <Link route="library" params={{ libraryName: "firebase" }}>
             <a>Firebase</a>
           </Link>
-          <Link href={{ pathname: "/library", query: { library: "Nextjs" } }}>
-            <a>Nextjs</a>
+          <Link route="library" params={{ libraryName: "nextjs" }}>
+            <a>Next</a>
           </Link>
         </div>
         <div className="align-right">
