@@ -158,3 +158,10 @@ tags
 
 
 # End of https://www.gitignore.io/api/vim,node,sass,linux,archilinuxpackages,visualstudiocode,sublimetext
+
+
+# NEXT ON FIREBASE ignore files
+
+dist
+
+# End of NEXT ON FIREBASE ignore files

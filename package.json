@@ -3,21 +3,19 @@
   "version": "1.0.0",
   "scripts": {
     "dev": "next \"src/app/\"",
-    "preserve":
-      "npm run build-public && npm run build-funcs && npm run build-app && npm run copy-deps && npm run install-deps",
+    "preserve": "npm run build-public && npm run build-funcs && npm run build-app && npm run copy-deps && npm run install-deps",
     "serve": "NODE_ENV=production firebase serve",
-    "predeploy":
-      "npm run build-public && npm run build-funcs && npm run build-app && npm run copy-deps",
+    "predeploy": "npm run build-public && npm run build-funcs && npm run build-app && npm run copy-deps",
     "deploy": "firebase deploy",
     "clean": "rimraf \"dist/functions/**\" && rimraf \"dist/public\"",
     "build-public": "cpx \"src/public/**/*.*\" \"dist/public\" -C",
     "build-funcs": "babel \"src/functions\" --out-dir \"dist/functions\"",
     "build-app": "next build \"src/app/\"",
-    "copy-deps":
-      "cpx \"*{package.json,package-lock.json,yarn.lock}\" \"dist/functions\" -C",
+    "copy-deps": "cpx \"*{package.json,package-lock.json,yarn.lock}\" \"dist/functions\" -C",
     "install-deps": "cd \"dist/functions\" && npm i"
   },
   "dependencies": {
+    "babel-preset-env": "^1.7.0",
     "firebase-admin": "^5.12.1",
     "firebase-functions": "^1.0.2",
     "next": "^6.1.1",
