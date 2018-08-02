@@ -3,16 +3,16 @@
   "version": "1.0.0",
   "scripts": {
     "dev": "next \"src/app/\"",
-    "preserve": "yarn build-public && yarn build-funcs && yarn build-app && yarn copy-routes && yarn copy-deps && yarn install-deps",
+    "preserve": "yarn build-public && yarn build-funcs && yarn build-app && yarn copy-deps && yarn install-deps",
     "serve": "NODE_ENV=production firebase serve",
-    "predeploy": "yarn build-public && yarn build-funcs && yarn build-app && yarn copy-deps && yarn copy-routes",
+    "predeploy": "yarn build-public && yarn build-funcs && yarn build-app && yarn copy-deps",
     "deploy": "firebase deploy",
     "clean": "rimraf \"dist/functions/**\" && rimraf \"dist/public\"",
     "build-public": "cpx \"src/public/**/*.*\" \"dist/public\" -C",
     "build-funcs": "babel \"src/functions\" -d \"dist/functions\"",
-    "build-app": "next build \"src/app/\"",
+    "build-app": "next build \"src/app/\" && yarn copy-routes",
     "copy-routes": "cpx \"src/app/routes.js\" dist/functions/ -C",
-    "copy-deps": "cpx \"*{package.json,package-lock.json,yarn.lock}\" \"dist/functions\" -C",
+    "copy-deps": "cpx \"*{package.json,yarn.lock}\" \"dist/functions\" -C",
     "install-deps": "cd \"dist/functions\" && yarn"
   },
   "dependencies": {
@@ -30,6 +30,7 @@
     "@babel/cli": "^7.0.0-beta.42",
     "cpx": "1.5.0",
     "firebase-tools": "^4.0.2",
+    "node": "6.11.5",
     "rimraf": "2.6.2"
   },
   "repository": "git@github.com:juandc/next-on-firebase.git",
