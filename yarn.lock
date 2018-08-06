@@ -6536,6 +6536,10 @@ ripemd160@^2.0.0, ripemd160@^2.0.1:
     hash-base "^3.0.0"
     inherits "^2.0.1"
 
+route-matcher@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/route-matcher/-/route-matcher-0.1.0.tgz#56ef118eb022470a15bbed5735ae3bf3f4ea2300"
+
 router@^1.3.1:
   version "1.3.3"
   resolved "https://registry.yarnpkg.com/router/-/router-1.3.3.tgz#c142f6b5ea4d6b3359022ca95b6580bd217f89cf"

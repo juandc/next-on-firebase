@@ -1,23 +1,17 @@
 import React, { Component } from "react";
 import Icon from "./Icon";
-import { Link } from "../routes";
+// import { LinkGroup, Link } from "./Link"
+// import { Link } from "../routes";
+import Link from "./Link";
 
 export default class Header extends Component {
   render() {
-    console.log(this.props.router)
-    
-    return (
-      <header>
+    return <header>
         <div className="align-left">
-          <Link route="home" passHref>
-            <a>Home</a>
-          </Link>
-          {/* <Link route="library" params={{ libraryName: "firebase" }}>
-            <a>Firebase</a>
-          </Link>
-          <Link route="library" params={{ libraryName: "nextjs" }}>
-            <a>Next</a>
-          </Link> */}
+          <Link.LinkGroup>
+            <Link.ActiveLink to="home" text="Homepage" />
+            <Link.ActiveLink to="about" text="About" />
+          </Link.LinkGroup>
         </div>
 
         <div className="align-right">
@@ -49,13 +43,24 @@ export default class Header extends Component {
             height: 100%;
           }
 
-          .align-left { margin-right: auto; }
-          .align-right { margin-left: auto; }
+          .align-left {
+            margin-right: auto;
+          }
+          .align-right {
+            margin-left: auto;
+          }
 
-          a { color: inherit; }
-          a:not(:first-child) { margin-left: 10px; }
+          header :global(a) {
+            color: inherit;
+            text-decoration: underline;
+          }
+          header :global(a.active) {
+            text-decoration: none;
+          }
+          header :global(a):not(:first-child) {
+            margin-left: 10px;
+          }
         `}</style>
-      </header>
-    );
+      </header>;
   }
 }

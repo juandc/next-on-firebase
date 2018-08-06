@@ -1,5 +1,16 @@
 const routes = module.exports = require('next-routes')()
 
-routes
-.add('home', '/', 'index')
-.add('about', '/about', 'about')
+const routesArray = [
+  { name: "home", pattern: "/", page: "index" },
+  { name: "about", pattern: "/about", page: "about" }
+];
+
+for (let i in routesArray) {
+  routes.add(routesArray[i]);
+}
+
+// routes
+// .add(HOME)
+// .add(ABOUT)
+
+exports.routes = routesArray;
