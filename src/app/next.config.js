@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 module.exports = {
-  distDir: "../../dist/functions/nextApp"
+  distDir: '../../dist/functions/nextApp'
 };

@@ -1,24 +1,32 @@
-import React, { Component, Fragment, Children } from "react";
-import { withRouter } from "next/router";
-import { Link as RouterLink } from "../routes";
-import { routes } from "../routes"
+import React, { Component, Children } from 'react';
+import WithRouter from '../utils/WithRouter';
+import { Link as RouterLink, routes } from '../routes';
 
 export default class Link extends Component {
-  static LinkGroup = props => <LinkGroup {...props} />;
-  static ActiveLink = props => <ActiveLink {...props} />;
-  static HashLink = props => <HashLink {...props} />;
+  static LinkGroup() {
+    return props => <LinkGroup {...props} />;
+  }
+
+  static ActiveLink() {
+    return props => <ActiveLink {...props} />;
+  }
+
+  static HashLink() {
+    return props => <HashLink {...props} />;
+  }
 }
 
 class LinkGroup extends Component {
   render() {
-    const { children, router } = this.props;
+    const { children } = this.props;
     const childrenArray = Children.toArray(children);
-    const activeRoute = getActiveRoute(router);
-
+    
     return (
-      <Fragment>
-        {childrenArray.map(
-          ({ key, props: { to: route, text, ...props } }) =>
+      <WithRouter>
+        {router => {
+          const activeRoute = getActiveRoute(router);
+          
+          return childrenArray.map(({ key, props: { to: route, text, ...props } }) =>
             React.createElement(ActiveLink, {
               ...props,
               key,
@@ -26,13 +34,12 @@ class LinkGroup extends Component {
               text,
               active: activeRoute === route
             })
-        )}
-      </Fragment>
+          )
+        }}
+      </WithRouter>
     );
   }
 }
-
-LinkGroup = withRouter(LinkGroup);
 
 class ActiveLink extends Component {
   render() {
@@ -40,17 +47,16 @@ class ActiveLink extends Component {
 
     return (
       <RouterLink route={to} passHref {...props}>
-        <a className={active && "active"}>
-          {text || to}
-        </a>
+        <a className={active ? 'active' : ''}>{text || to}</a>
       </RouterLink>
     );
   }
 }
 
-
 class HashLink extends Component {
-  render() {}
+  render() {
+    return null;
+  }
 }
 
 function getActiveRoute({ pathname }) {
@@ -60,10 +66,9 @@ function getActiveRoute({ pathname }) {
   }
 }
 
-function isRouteActive({ pathname }, route) {
-  for (let i in routes) {
-    const { name, pattern } = routes[i];
-    if (pattern === pathname && name === route) return true;
-  }
-}
-
+// function isRouteActive({ pathname }, route) {
+//   for (let i in routes) {
+//     const { name, pattern } = routes[i];
+//     if (pattern === pathname && name === route) return true;
+//   }
+// }

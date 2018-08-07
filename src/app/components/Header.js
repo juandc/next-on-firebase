@@ -1,12 +1,11 @@
-import React, { Component } from "react";
-import Icon from "./Icon";
-// import { LinkGroup, Link } from "./Link"
-// import { Link } from "../routes";
-import Link from "./Link";
+import React, { Component } from 'react';
+import Icon from './Icon';
+import Link from './Link';
 
 export default class Header extends Component {
   render() {
-    return <header>
+    return (
+      <header>
         <div className="align-left">
           <Link.LinkGroup>
             <Link.ActiveLink to="home" text="Homepage" />
@@ -15,7 +14,7 @@ export default class Header extends Component {
         </div>
 
         <div className="align-right">
-          <a href="//github.com/juandc/next-on-firebase" target="_blank">
+          <a href="//github.com/juandc/next-on-firebase" target="_blank" rel="noopener noreferrer">
             <Icon name="github" color="white" size="16" />
           </a>
         </div>
@@ -61,6 +60,7 @@ export default class Header extends Component {
             margin-left: 10px;
           }
         `}</style>
-      </header>;
+      </header>
+    );
   }
 }

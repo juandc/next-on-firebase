@@ -1,8 +1,10 @@
+/* eslint-disable */
+
 const routes = module.exports = require('next-routes')()
 
 const routesArray = [
-  { name: "home", pattern: "/", page: "index" },
-  { name: "about", pattern: "/about", page: "about" }
+  { name: 'home', pattern: '/', page: 'index' },
+  { name: 'about', pattern: '/about', page: 'about' }
 ];
 
 for (let i in routesArray) {

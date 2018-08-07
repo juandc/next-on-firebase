@@ -1,7 +1,6 @@
-import React from "react";
-import App, { Container } from "next/app";
-import Layout from "../components/Layout";
-import Header from "../components/Header";
+import React from 'react';
+import App, { Container } from 'next/app';
+import Layout from '../components/Layout';
 
 export default class MyApp extends App {
   static async getInitialProps({ Component, ctx, router }) {
@@ -15,10 +14,12 @@ export default class MyApp extends App {
   render() {
     const { Component: Page, pageProps, router } = this.props;
 
-    return <Container>
+    return (
+      <Container>
         <Layout router={router}>
           <Page {...pageProps} />
         </Layout>
-      </Container>;
+      </Container>
+    );
   }
 }

@@ -1,16 +1,14 @@
-import React, { Component, Fragment } from "react";
-import Header from "./Header"
+import React, { Component, Fragment } from 'react';
+import Header from './Header'
 
 export default class Layout extends Component {
   render() {
     const { router, children } = this.props;
 
     return (
-      <>
+      <Fragment>
         <Header router={router} />
-
         <div className="page">{children}</div>
-
         <style jsx global>{`
           :root {
             --color-black: #333;
@@ -33,7 +31,7 @@ export default class Layout extends Component {
             margin-top: var(--header-height);
           }
         `}</style>
-      </>
+      </Fragment>
     );
   }
 }

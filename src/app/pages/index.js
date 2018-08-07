@@ -1,3 +1,12 @@
-import { Link } from "../routes"
+import React, { Component } from 'react';
+import { Link } from '../components/Link';
 
-export default () => <div>Home <Link to="about"><a>About</a></Link></div>;
+export default class Home extends Component {
+  render() {
+    return (
+      <div>
+        Home <Link to="about">About</Link>
+      </div>
+    );
+  }
+}

@@ -1,7 +1,12 @@
-import { Link } from "../routes";
+import React, { Component } from 'react';
+import { Link } from '../components/Link';
 
-export default () => (
-  <div>
-    About <Link to="home"><a>Home</a></Link>
-  </div>
-);
+export default class Home extends Component {
+  render() {
+    return (
+      <div>
+        About <Link to="home">Home</Link>
+      </div>
+    );
+  }
+}

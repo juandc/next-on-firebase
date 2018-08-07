@@ -1,6 +1,6 @@
 {
   "name": "next-on-firebase",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "scripts": {
     "dev": "next \"src/app/\"",
     "preserve": "yarn build-public && yarn build-funcs && yarn build-app && yarn copy-deps && yarn install-deps",
@@ -19,6 +19,7 @@
     "@babel/core": "^7.0.0-beta.42",
     "@babel/runtime": "^7.0.0-beta.55",
     "babel-preset-env": "^1.7.0",
+    "firebase": "^5.3.1",
     "firebase-admin": "^5.13.1",
     "firebase-functions": "^2.0.2",
     "next": "^6.1.1",
@@ -29,9 +30,15 @@
   },
   "devDependencies": {
     "@babel/cli": "^7.0.0-beta.42",
+    "babel-eslint": "7",
     "cpx": "1.5.0",
+    "eslint": "3.x",
+    "eslint-config-airbnb": "17.0.0",
+    "eslint-plugin-import": "^2.12.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.9.1",
     "firebase-tools": "^4.0.2",
-    "node": "6.11.5",
+    "node": "8",
     "rimraf": "2.6.2"
   },
   "engines": {
