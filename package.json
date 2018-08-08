@@ -2,7 +2,8 @@
   "name": "next-on-firebase",
   "version": "1.0.1",
   "scripts": {
-    "dev": "next \"src/app/\"",
+    "lint": "eslint src/app",
+    "dev": "next src/app",
     "preserve": "yarn build-public && yarn build-funcs && yarn build-app && yarn copy-deps && yarn install-deps",
     "serve": "NODE_ENV=production firebase serve",
     "predeploy": "yarn build-public && yarn build-funcs && yarn build-app && yarn copy-deps",

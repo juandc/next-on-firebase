@@ -3,11 +3,11 @@ import Header from './Header'
 
 export default class Layout extends Component {
   render() {
-    const { router, children } = this.props;
+    const { children } = this.props;
 
     return (
       <Fragment>
-        <Header router={router} />
+        <Header />
         <div className="page">{children}</div>
         <style jsx global>{`
           :root {

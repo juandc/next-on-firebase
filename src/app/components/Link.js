@@ -3,16 +3,16 @@ import WithRouter from '../utils/WithRouter';
 import { Link as RouterLink, routes } from '../routes';
 
 export default class Link extends Component {
-  static LinkGroup() {
-    return props => <LinkGroup {...props} />;
+  static LinkGroup(props) {
+    return <LinkGroup {...props} />;
   }
 
-  static ActiveLink() {
-    return props => <ActiveLink {...props} />;
+  static ActiveLink(props) {
+    return <ActiveLink {...props} />;
   }
 
-  static HashLink() {
-    return props => <HashLink {...props} />;
+  static SimpleLink(props) {
+    return <SimpleLink {...props} />;
   }
 }
 
@@ -25,16 +25,20 @@ class LinkGroup extends Component {
       <WithRouter>
         {router => {
           const activeRoute = getActiveRoute(router);
-          
-          return childrenArray.map(({ key, props: { to: route, text, ...props } }) =>
-            React.createElement(ActiveLink, {
-              ...props,
-              key,
-              route,
-              text,
-              active: activeRoute === route
-            })
-          )
+
+          return childrenArray.map(child => {
+            const { key, props: { to: route, text, ...props } } = child;
+
+            return (
+              React.createElement(ActiveLink, {
+                ...props,
+                key,
+                route,
+                text,
+                active: activeRoute === route
+              })
+            );
+          })
         }}
       </WithRouter>
     );
@@ -53,12 +57,19 @@ class ActiveLink extends Component {
   }
 }
 
-class HashLink extends Component {
+class SimpleLink extends Component {
   render() {
-    return null;
+    const { children, to: route, ...props } = this.props;
+
+    return (
+      <RouterLink route={route} passHref {...props}>
+        <a>{children}</a>
+      </RouterLink>
+    );
   }
 }
 
+// Helpers
 function getActiveRoute({ pathname }) {
   for (let i in routes) {
     const { name, pattern } = routes[i];
