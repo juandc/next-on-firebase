@@ -19,6 +19,34 @@ README Improvements:
 
 Design:
 
-- Apply design from some (a lot of) commits ago 😉
+- [x] Apply design from some (a lot of) commits ago 😉
+- Implement a great design 🏁
 
+Code:
 
+- Add `WithFirebase` integration, use code must look like this:
+
+```jsx
+export default class HeaderButtons extends Component {
+  render() {
+    return (
+      <WithFirebaseProvider firebaseConfig={firebaseConfig}>
+        <WithRouter>
+          {router => (
+            <WithFirebase>
+              {({ auth: { authUser, simpleAuth } }) => {
+                const btnText = authUser ? "Sign Out" : "Sign In";
+                const btnOnClick = authUser
+                  ? () => simpleAuth.signOut()
+                  : () => router.pushRoute('signIn');
+
+                return <HeaderButton onClick={btnOnClick}>{btnText}</HeaderButton>;
+              }}
+            </WithFirebase>
+          )}
+        </WithRouter>
+      </WithFirebaseProvider>
+    );
+  }
+}
+```

@@ -1,10 +1,17 @@
 import { Component } from 'react';
 import { withRouter } from 'next/router';
+import { Router } from '../routes';
 
-export default withRouter(class WithRouter extends Component {
+class WithRouter extends Component {
   render() {
     const { children, router } = this.props;
+    const childrenProps = {
+      ...router,
+      ...Router,
+    };
 
-    return children(router);
+    return children(childrenProps);
   }
-});
+}
+
+export default withRouter(WithRouter);

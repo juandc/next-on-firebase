@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Auth from '../utils/firebase/auth';
 import Icon from './Icon';
 import Link from './Link';
 
@@ -15,8 +14,6 @@ export default class Header extends Component {
         </div>
 
         <div className="align-right">
-          <button onClick={() => Auth.simpleAuth.signOut()}>Log In</button>
-
           <a href="//github.com/juandc/next-on-firebase" target="_blank" rel="noopener noreferrer">
             <Icon name="github" color="white" size="16" />
           </a>

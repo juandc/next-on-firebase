@@ -1,9 +1,11 @@
-import Firebase from './firebase';
+import firebase from './firebase';
 
 // Pass the "auth" prop to all methods
 function auth(methods) {
+  const firebaseAuth = firebase.auth();
+
   for (let i in methods) {
-    methods[i] = new methods[i](Firebase.auth());
+    methods[i] = new methods[i](firebaseAuth);
   }
 
   return methods;
@@ -21,6 +23,7 @@ function simpleAuth(auth) {
 }
 
 export default auth({ simpleAuth });
+
 // class SimpleAuth {
 //   constructor(props) {
 //     this.auth = props.auth;
